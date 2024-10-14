@@ -9,7 +9,7 @@ interface Game {
 
 interface FetchGamesResponse {
   count: number;
-  result: Game[];
+  results: Game[];
 }
 
 const useGames = () => {
@@ -22,8 +22,8 @@ const useGames = () => {
         apiClient
             .get<FetchGamesResponse>("/games", {signal: controller.signal})
             .then((res) => {
-            if (res.data && res.data.result) {
-                setGames(res.data.result);
+            if (res.data && res.data.results) {
+                setGames(res.data.results);
             } else {
                 setError("No games found");
             }
